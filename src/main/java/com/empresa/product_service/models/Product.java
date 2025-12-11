@@ -10,7 +10,9 @@ public class Product {
 
 
  
-
+public Product(){
+  
+}
 
  public Product(Long id, String name, String category, int stock, double price){
   this.id=id;

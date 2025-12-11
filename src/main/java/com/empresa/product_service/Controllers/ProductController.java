@@ -10,7 +10,8 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
+
 
 
 @RestController
@@ -32,6 +33,23 @@ public class ProductController {
 
 
   }
+
+  @GetMapping("/{id}")
+  ResponseEntity<Product> findProductById(@PathVariable Long id){
+    try{
+
+    Product findProduct = productServiceImpl.findProductById(id);
+
+    return ResponseEntity.ok(findProduct);
+    }catch(RuntimeException e){
+      return ResponseEntity.notFound().build();
+    }
+
+
+    
+  }
+  
+  
   
   
 

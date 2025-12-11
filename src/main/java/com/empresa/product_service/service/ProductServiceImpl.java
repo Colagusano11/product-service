@@ -32,6 +32,32 @@ return products;
 }
 
 
+@Override
+public Product findProductById(Long id){
+
+  for(Product p : products){
+    
+    if(p.getId().equals(id)){
+      return p;
+      }
+  }
+  throw new RuntimeException("Producto no econtrado");
+  }
+  
 
 
-}
+
+  
+  }
+  
+
+
+  
+
+
+
+
+
+
+
+
