@@ -43,11 +43,45 @@ public Product findProductById(Long id){
   }
   throw new RuntimeException("Producto no econtrado");
   }
+
+
+  @Override
+  public Product createProduct(Product producto){
+    Long maxId = 0L;
+
+    for(Product p : products){
+      if(p.getId()> maxId){
+        maxId = p.getId();
+      }
+    }
+    Long nuevoId = maxId +1;
+    
+    Product productoN = new Product();
+    productoN.setId(nuevoId);
+    productoN.setName(producto.getName());
+    productoN.setCategory(producto.getCategory());
+    productoN.setPrice(producto.getPrice());
+    productoN.setStock(producto.getStock());
+
+      products.add(productoN);
+
+      return productoN;
+      }
+
+      @Override
+      public void deleteProduct(Long id){
+          
+         boolean removed = products.removeIf( products -> products.getId().equals(id));
+
+         if(!removed){
+          throw new IllegalArgumentException("Producto no encontrado");
+         }
+  }
   
 
 
 
-  
+
   }
   
 

@@ -1,17 +1,29 @@
 package com.empresa.product_service.models;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Positive;
+
 public class Product {
 
+
  private Long id;
+
+ @NotEmpty
  private String name;
  private String category;
+
+ @PositiveOrZero
  private int stock;
+
+ @Positive
  private double price;
 
 
  
 public Product(){
-  
+
 }
 
  public Product(Long id, String name, String category, int stock, double price){
